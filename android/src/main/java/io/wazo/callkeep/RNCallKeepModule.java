@@ -545,7 +545,7 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule implements Life
         }
         Context context = this.getAppContext();
         AudioManager audioManager = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
-        audioManager.setMode(0);
+        audioManager.setMode(AudioManager.MODE_NORMAL);
         conn.onDisconnect();
         this.stopListenToNativeCallsState();
         this.hasActiveCall = false;
