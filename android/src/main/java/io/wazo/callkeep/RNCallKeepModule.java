@@ -684,7 +684,17 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule implements Life
         }
 
         boolean hasSim = telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT;
-        boolean hasDefaultAccount = telecomManager.getDefaultOutgoingPhoneAccount("tel") != null;
+        boolean hasDefaultAccount = false;
+
+    if (ContextCompat.checkSelfPermission(getReactApplicationContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+        try {
+           hasDefaultAccount = telecomManager.getDefaultOutgoingPhoneAccount("tel") != null;
+        } catch (SecurityException e) {
+            Log.w(TAG, "SecurityException: Cannot get default outgoing phone account", e);
+        }
+    } else {
+        Log.w(TAG, "CALL_PHONE permission not granted when checking default phone account.");
+    }
 
         promise.resolve(!hasSim || hasDefaultAccount);
     }
