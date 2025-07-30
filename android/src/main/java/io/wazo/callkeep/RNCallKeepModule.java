@@ -1106,11 +1106,7 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule implements Life
             focusIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             activity.startActivity(focusIntent);
         } else {
-            focusIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK +
-                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED +
-                    WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD +
-                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-
+            focusIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getReactApplicationContext().startActivity(focusIntent);
         }
     }
