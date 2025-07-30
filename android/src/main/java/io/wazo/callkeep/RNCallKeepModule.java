@@ -518,7 +518,6 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule implements Life
 
         Log.d(TAG, "[RNCallKeepModule] startCall, uuid: " + uuid);
         this.listenToNativeCallsState();
-        telecomManager.placeCall(uri, extras);
         if (ContextCompat.checkSelfPermission(getReactApplicationContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             telecomManager.placeCall(uri, extras);
         } else {
