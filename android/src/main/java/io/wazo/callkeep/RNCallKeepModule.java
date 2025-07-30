@@ -52,6 +52,8 @@ import android.telephony.TelephonyManager;
 import android.telephony.TelephonyCallback;
 import android.telephony.PhoneStateListener;
 import android.util.Log;
+import androidx.annotation.RequiresApi;
+import android.annotation.SuppressLint;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Dynamic;
@@ -263,6 +265,8 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule implements Life
          }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.S)
+    @SuppressLint("NewApi") // Optional, silences lint warning if needed
     private class CallStateListener extends TelephonyCallback implements TelephonyCallback.CallStateListener {
 
           @Override
